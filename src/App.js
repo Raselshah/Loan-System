@@ -5,6 +5,8 @@ import UserInfo from "./Components/UserInfo/UserInfo";
 import UserDetails from "./Components/UserDetails/UserDetails";
 import BillDetails from "./Components/BillDetails/BillDetails";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [userData, setUserData] = useState({});
@@ -20,7 +22,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}>
           <Route
-            index element={<UserInfo getDataUserInfo={getDataUserInfo} />}
+            index
+            element={<UserInfo getDataUserInfo={getDataUserInfo} />}
           />
           <Route
             path="userInfo"
@@ -34,6 +37,8 @@ function App() {
           />
         </Route>
       </Routes>
+
+      <ToastContainer />
     </div>
   );
 }

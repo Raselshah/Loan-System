@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+const axios = require("axios").default;
 
 const BillDetails = ({ userDetails, userData }) => {
   const { register, handleSubmit } = useForm();
@@ -8,7 +10,7 @@ const BillDetails = ({ userDetails, userData }) => {
       firstName: userData.firstName,
       lastName: userData.lastName,
       age: userData.age,
-      mobileNumber: userData.userData,
+      mobileNumber: userData.mobileNumber,
       businessName: userDetails.businessName,
       address: userDetails.address,
       gstNo: userDetails.gstNo,
@@ -16,6 +18,12 @@ const BillDetails = ({ userDetails, userData }) => {
       interestRate: data.interestRate,
       loanTenure: data.loanTenure,
     };
+
+    axios.post("http://localhost:5000/userLoan", allData).then((res) => {
+      toast("Your Bill payment successfully");
+      console.log(res.data);
+    });
+
     e.target.reset();
     console.log(allData);
   };

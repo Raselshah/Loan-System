@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const UserInfo = ({ getDataUserInfo }) => {
   const [userInfo, setUserInfo] = useState({});
   const { register, handleSubmit } = useForm();
   const onSubmit = (data, e) => {
     setUserInfo(data);
+    toast("Your Data saved please go the next step");
     e.target.reset();
   };
   getDataUserInfo(userInfo);

@@ -1,12 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const UserDetails = ({ getDataUserDetails }) => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data, e) => {
     getDataUserDetails(data);
     toast("Your Data saved please go the next step");
+    navigate("/loanDetails");
     e.target.reset();
   };
   return (

@@ -19,10 +19,12 @@ const BillDetails = ({ userDetails, userData }) => {
       loanTenure: data.loanTenure,
     };
 
-    axios.post("http://localhost:5000/userLoan", allData).then((res) => {
-      toast("Your Bill payment successfully");
-      console.log(res.data);
-    });
+    axios
+      .post("https://fathomless-shore-03190.herokuapp.com/userLoan", allData)
+      .then((res) => {
+        toast("Your Bill payment successfully");
+        console.log(res.data);
+      });
 
     e.target.reset();
     console.log(allData);

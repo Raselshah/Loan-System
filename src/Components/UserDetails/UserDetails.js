@@ -1,9 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const UserDetails = () => {
+const UserDetails = ({ getDataUserDetails }) => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data, e) => {
+    getDataUserDetails(data);
+    e.target.reset();
+  };
   return (
     <div className="mt-4">
       <h2 className="text-center text-2xl m-2">
@@ -19,18 +22,11 @@ const UserDetails = () => {
           {...register("businessName", { required: true, maxLength: 40 })}
         />
         <input
-          placeholder="GST no"
+          placeholder="GST No"
           class="input input-bordered w-full max-w-xs"
           type="number"
           required
           {...register("gstNo")}
-        />
-        <input
-          placeholder="age"
-          class="input input-bordered w-full max-w-xs"
-          type="number"
-          {...register("age")}
-          required
         />
         <input
           placeholder="Address"
@@ -39,7 +35,10 @@ const UserDetails = () => {
           {...register("address")}
           required
         />
-        <input type="submit" />
+        <input
+          className="btn bg-sky-700 hover:bg-sky-800 border-0 w-36 mt-4 "
+          type="submit"
+        />
       </form>
     </div>
   );

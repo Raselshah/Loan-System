@@ -5,14 +5,14 @@ const Home = () => {
   return (
     <div>
       <div className="tabs bg-sky-300">
-        <Link className="tab tab-lifted text-lg text-white" to="user">
-          Home
+        <Link className="tab tab-lifted text-lg text-white" to="/">
+          Personal details
         </Link>
         <Link className="tab tab-lifted text-lg text-white" to="userInfo">
-          User Info
+          Business details
         </Link>
         <Link className="tab tab-lifted text-lg text-white" to="loanDetails">
-          Total Loan
+          Loan Application
         </Link>
       </div>
       <Outlet />

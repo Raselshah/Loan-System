@@ -1,9 +1,15 @@
 import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const UserInfo = () => {
+const UserInfo = ({ getDataUserInfo }) => {
+  const [userInfo, setUserInfo] = useState({});
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data, e) => {
+    setUserInfo(data);
+    e.target.reset();
+  };
+  getDataUserInfo(userInfo);
   return (
     <div className="mt-4">
       <h2 className="text-center text-2xl m-2">
@@ -24,7 +30,7 @@ const UserInfo = () => {
           {...register("lastName", { required: true, maxLength: 10 })}
         />
         <input
-          placeholder="age"
+          placeholder="Age"
           class="input input-bordered w-full max-w-xs"
           type="number"
           {...register("age")}
@@ -37,7 +43,10 @@ const UserInfo = () => {
           {...register("mobileNumber")}
           required
         />
-        <input type="submit" />
+        <input
+          className="btn bg-sky-700 hover:bg-sky-800 border-0 w-36 mt-4 "
+          type="submit"
+        />
       </form>
     </div>
   );

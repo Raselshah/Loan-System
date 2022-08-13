@@ -1,9 +1,24 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const BillDetails = () => {
+const BillDetails = ({ userDetails, userData }) => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data, e) => {
+    const allData = {
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      age: userData.age,
+      mobileNumber: userData.userData,
+      businessName: userDetails.businessName,
+      address: userDetails.address,
+      gstNo: userDetails.gstNo,
+      loanAmount: data.loanAmount,
+      interestRate: data.interestRate,
+      loanTenure: data.loanTenure,
+    };
+    e.target.reset();
+    console.log(allData);
+  };
   return (
     <div className="mt-4">
       <h2 className="text-center text-2xl m-2">
@@ -33,7 +48,11 @@ const BillDetails = () => {
           {...register("loanTenure")}
           required
         />
-        <input type="submit" />
+        <input
+          className="btn bg-sky-700 hover:bg-sky-800 border-0 w-36 mt-4 "
+          type="submit"
+          value="SUBMIT TO LOAN"
+        />
       </form>
     </div>
   );

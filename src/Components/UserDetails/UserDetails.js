@@ -10,7 +10,6 @@ const UserDetails = ({ getDataUserDetails }) => {
     getDataUserDetails(data);
     toast("Your Data saved please go the next step");
     navigate("/loanDetails");
-    e.target.reset();
   };
   return (
     <div className="mt-4">

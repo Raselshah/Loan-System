@@ -5,6 +5,7 @@ const axios = require("axios").default;
 
 const BillDetails = ({ userDetails, userData }) => {
   const { register, handleSubmit } = useForm();
+  console.log(userData);
   const onSubmit = (data, e) => {
     const allData = {
       firstName: userData.firstName,
